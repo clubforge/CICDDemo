@@ -52,11 +52,11 @@ jobs:
         with:
           command: monitor
           image: "ghcr.io/clubforge/cicddemo:latest"
-          args: --file=Dockerfile --project-name=CICDDemo
+          args: --file=CICDDemo/Dockerfile --project-name=CICDDemo
 
       - name: Push image
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
-          file: ./Dockerfile
+          file: ./CICDDemo/Dockerfile
