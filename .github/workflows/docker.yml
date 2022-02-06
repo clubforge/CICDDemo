@@ -7,6 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: docker build csharp
+      - name: docker build . --file Dockerfile --tag $IMAGE_NAME
         run: |
           docker build ./HelloWorld -t clubforge/cicddemo
+      - name: Log into GitHub Container Registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}
+          docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Push image to GitHub Container Registry
+        run: |
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:${{ github.run_id }}
+          docker push $IMAGE_ID
