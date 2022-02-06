@@ -3,8 +3,8 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["HelloWorld/HelloWorld.csproj", "HelloWorld/"]
-RUN dotnet restore "HelloWorld/HelloWorld.csproj"
+COPY ["HelloWorld/HelloWorld.csproj", "./"]
+RUN dotnet restore "./HelloWorld.csproj"
 COPY . .
 WORKDIR "/src/HelloWorld"
 RUN dotnet build "HelloWorld.csproj" -c Release -o /app/build
