@@ -8,6 +8,12 @@ jobs:
       
     steps:
     - uses: actions/checkout@v2
+    - name: docker login
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        docker login -u clubforge -p $GITHUB_TOKEN
     - name: docker build
       run: |
         docker build ./HelloWorld -t ghcr.io/clubforge/helloworld:latest
+        
