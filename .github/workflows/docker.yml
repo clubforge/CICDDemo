@@ -16,4 +16,6 @@ jobs:
     - name: docker build
       run: |
         docker build ./HelloWorld -t ghcr.io/clubforge/helloworld:latest
-        
+    - name: docker push
+      run: |
+        docker push ghcr.io/clubforge.helloworld        
