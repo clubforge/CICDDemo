@@ -12,7 +12,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        ${{ secrets.GITHUB_TOKEN }} | docker login -u clubforge --password-stdin
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u clubforge --password-stdin
     - name: docker build
       run: |
         docker build ./HelloWorld -t ghcr.io/clubforge/helloworld:latest
