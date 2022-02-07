@@ -13,7 +13,7 @@ jobs:
         echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u clubforge --password-stdin
     - name: docker build
       run: |
-        docker build ./HelloWorld -t ghcr.io/clubforge/helloworld:latest
+        docker build ./HelloWorld -t ghcr.io/clubforge/hello-world:latest
     - name: docker push
       run: |
-        docker push ghcr.io/clubforge.helloworld        
+        docker push ghcr.io/clubforge/hello-world      
