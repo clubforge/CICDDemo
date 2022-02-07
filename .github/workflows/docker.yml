@@ -9,8 +9,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: docker login
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u clubforge --password-stdin
     - name: docker build
